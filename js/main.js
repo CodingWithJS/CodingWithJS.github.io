@@ -1,149 +1,51 @@
-const svg_id = '#global-warming-chart';
-const svg_id_with_legend = 'legend';
-const svg_id_with_legend_hash = '#legend';
-const svg_width = 800;
-const svg_height = 500;
-const energy_consumption_chart_title = "Energy Consumption in the World from Different Sources"
-const co2_chart_title = "CO2 Emissions by Fuel/Industry"
-const temperature_chart_title = "Global Warming Contributions from fossil fuels and land use"
-var start_year;
-var end_year;
-var region;
-var current_chart = 'energy_cons';
-
-function clearChart(svg_id) {
-    const svg = d3.select(svg_id);
-    svg.selectAll("*").remove();
-    if (document.getElementById(svg_id_with_legend) != null) {
-        const elementToRemove = document.getElementById(svg_id_with_legend);
-        elementToRemove.remove(); 
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
     }
-        const parentElement = document.querySelector(".flex-box-charts");
-        const svg_new = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg_new.setAttribute("id","legend");
-        svg_new.setAttribute("width","200");
-        svg_new.setAttribute("height","200");
-        svg_new.setAttribute("style","align-self: flex-end;" );
-        parentElement.appendChild(svg_new);
-    
-}
+  });
+}, {
+  threshold: 0.1
+});
 
-function selectStartYear() {
-    const selectedStartYear = document.getElementById("start-years").value;
-    if (selectedStartYear) {
-        start_year = selectedStartYear;
+// Observe all sections
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(section => observer.observe(section));
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
-}
+  });
+});
 
-function selectEndYear() {
-    const selectedEndYear = document.getElementById("end-years").value;
-    if (selectedEndYear) {
-        end_year = selectedEndYear;
+// Add active class to nav links on scroll
+window.addEventListener('scroll', () => {
+  let current = '';
+  const sections = document.querySelectorAll('section');
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= (sectionTop - sectionHeight / 3)) {
+      current = section.getAttribute('id');
     }
-}
+  });
 
-function selectRegion() {
-    const selectedRegion = document.getElementById("regions").value;
-    if (selectedRegion) {
-        region = selectedRegion;
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').slice(1) === current) {
+      link.classList.add('active');
     }
-}
-
-function initChart(startYear, endYear,region, currentChart) {
-    if (currentChart === 'energy_cons') {
-        init_energy_cons(svg_width, svg_height, startYear, endYear, svg_id)
-    } else if (currentChart === 'co2') {
-        init_co2(svg_width, svg_height, startYear, endYear,region, svg_id)
-    } else if (currentChart === 'temperature') {
-        init_temperature(svg_width, svg_height, startYear, endYear, region, svg_id)
-    }
-}
-
-function loadH2Element(text) {
-    const h2Element = document.getElementById("chart-text");
-    if (h2Element) {
-        h2Element.textContent = text;
-    }
-}
-
-function loadPElement(text) {
-    const pElement = document.getElementById("chart-paragraph");
-    if (pElement) {
-        pElement.textContent = text;
-    }
-}
-
-function clearYearsAndRegion() {
-    start_year = undefined;
-    end_year = undefined;
-    region = undefined;
-}
-
-function populateDropdownFullYear(dropDownId, data) {
-    const dropdown = document.getElementById(dropDownId)
-    dropdown.innerHTML = '<option value="">-- Select Year --</option>';
-
-    const minValue = d3.min(data, d => +d.year);
-    const maxValue = d3.max(data, d => +d.year);
-
-    data.forEach(d => {
-        if (d.year <= maxValue && d.year >= minValue) {
-            const option = document.createElement("option");
-            option.value = Number(d.year);
-            option.textContent = d.year;
-            dropdown.appendChild(option);
-        }
-    })
-}
-
-function populateDropdownFilterStartYear(dropDownId, data) {
-    const dropdown = document.getElementById(dropDownId)
-    dropdown.innerHTML = '<option value="">-- Select Year --</option>';
-
-    const minValue = d3.min(data, d => +d.year);
-    const maxValue = d3.max(data, d => +d.year);
-
-    data.forEach(d => {
-        if (d.year <= maxValue && d.year > minValue) {
-            const option = document.createElement("option");
-            option.value = Number(d.year);
-            option.textContent = d.year;
-            dropdown.appendChild(option);
-        }
-    })
-}
-
-function populateDropdownFilterEndYear(dropDownId, data) {
-    const dropdown = document.getElementById(dropDownId)
-    dropdown.innerHTML = '<option value="">-- Select Year --</option>';
-
-    const minValue = d3.min(data, d => +d.year);
-    const maxValue = d3.max(data, d => +d.year);
-
-    data.forEach(d => {
-        if (d.year < maxValue && d.year >= minValue) {
-            const option = document.createElement("option");
-            option.value = Number(d.year);
-            option.textContent = d.year;
-            dropdown.appendChild(option);
-        }
-    })
-}
-
-function populateRegion(dropDownId, data, initial_val) {
-    const dropdown = document.getElementById(dropDownId)
-    dropdown.innerHTML = !initial_val ? '<option value="">-- Select Region --</option>' : initial_val;
-
-    const uniq_vals = new Set();
-    
-    data.forEach( d => {
-        uniq_vals.add(d.entity);
-    })
-
-    uniq_vals.forEach( d => {
-        const option = document.createElement("option");
-        option.value = d;
-        option.textContent = d;
-        dropdown.appendChild(option);
-    })
-}
+  });
+}); 

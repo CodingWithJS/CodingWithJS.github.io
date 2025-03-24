@@ -1,61 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
-</html>
-<script src='https://d3js.org/d3.v5.min.js'></script>
-<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/charts/energy_cons.js"></script>
-<script src="js/charts/co2.js"></script>
-<script src="js/charts/temperature.js"></script>
-<script src="js/chartText.js"></script>
-<link rel="icon" type="image/x-icon" href="images/favicon.png">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Warming and Energy Consumptions</title>
+  <meta name="description" content="Jeremy Samuel - Software Engineer and Technology Leader portfolio website">
+  <meta name="keywords" content="Jeremy Samuel, Software Engineer, Technology Leader, Portfolio, UIUC">
+  <title>Jeremy Samuel - Software Engineer & Technology Leader</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
-  <div class="flex-box">
-    <h1>Global Warming and Energy Consumptions</h1>
-  </div>
-  <div class="flex-box">
-    <div class="pagination">
-      <a href="#" class="disabled" >&laquo;</a>
-      <a href="index.html" class="active disabled">Energy Consumption</a>
-      <a href="co2.html" class="disabled">CO2 Emissions</a>
-      <a href="gw.html" class="disabled">Global Warming</a>
-      <a href="co2.html">&raquo;</a>
-    </div>
-  </div>
-  <div class="flex-box">
-    <div class="flex-box-child1">
-      <br>
-          <div class="flex-box-charts">
-            <svg id="global-warming-chart" width="800" height="500"></svg>
-          </div>
-    </div>
-    <div class="flex-box-child2">
-      <div class="flex-box">
-        <h2 id="chart-text"></h2>
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="#" class="nav-logo">Jeremy Samuel</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </div>
-    <div class= "flex-box" style="align-items: center;">
-      <p id="chart-paragraph"></p>
     </div>
-    </div>
-  </div>
-  <hr>
-  <div class="flex-container">
-    <p>Data Sources:&nbsp;</p>
-    <a href="https://ourworldindata.org/">Our World In Data</a>
-    <span>&nbsp;|&nbsp;</span>
-    <a href="https://github.com/owid">Our World In Data Github</a>
-  </div>
-  <script src="js/charts/energy_cons.js"
-    onload="clearChart(svg_id);clearYearsAndRegion();init_energy_cons(svg_width,svg_height,undefined,undefined,svg_id);current_chart='energy_cons';loadH2Element(energy_consumption_chart_title);loadPElement(energy_consumption_chart_paragraph);"></script>
-</body>
+  </nav>
 
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="profile-container animate__animated animate__fadeIn">
+        <img src="images/profile.jpg" alt="Jeremy Samuel" class="profile-image">
+      </div>
+      <h1 class="animate__animated animate__fadeInDown">Jeremy Samuel</h1>
+      <h2 class="animate__animated animate__fadeInUp">Software Engineer & Technology Leader</h2>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Master's student in Computer Science and Technology Management at UIUC</p>
+      <div class="social-links animate__animated animate__fadeInUp animate__delay-1s">
+        <a href="https://www.linkedin.com/in/jeremy-samuel-col323/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/CodingWithJS" target="_blank" rel="noopener" aria-label="GitHub Profile">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-text">
+          Versatile software engineer with 7+ years of experience and a master's student in Computer Science (Data Science specialization) 
+          and Technology Management. Proven track record in developing scalable, AI-driven solutions and optimizing workflows to drive efficiency. 
+          Aspiring technology manager and leader focused on delivering innovative products that solve business problems through data-driven 
+          decision-making and management skills.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Graduate Teaching Assistant</h3>
+            <h4>University of Illinois Urbana-Champaign</h4>
+            <p class="date">Sep 2024 - Present</p>
+            <ul>
+              <li>Managing 4 teams for BADM-550: Business Practicum projects</li>
+              <li>Conducting workshops for 120+ MSBA students on Tableau and Git</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h3>Associate Software Engineer III</h3>
+            <h4>JPMorgan Chase</h4>
+            <p class="date">Feb 2022 - Jul 2024</p>
+            <ul>
+              <li>Led development teams and mentored junior developers</li>
+              <li>Developed content management system with React and Spring Boot</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-grid">
+          <div class="education-item">
+            <h3>MS in Technology Management</h3>
+            <h4>University of Illinois Urbana-Champaign</h4>
+            <p>Expected Aug 2025</p>
+            <p>Concentration: Information Technology and Control</p>
+          </div>
+          <div class="education-item">
+            <h3>MS in Computer Science</h3>
+            <h4>University of Illinois Urbana-Champaign</h4>
+            <p>Expected Aug 2024 | GPA: 4.0/4.0</p>
+            <p>Specialization: Data Science</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Course Feedback Reviewer</h3>
+            <p>React and Python application using Google's BERT model for sentiment analysis and summarization of course feedback.</p>
+            <div class="tech-stack">
+              <span>React</span>
+              <span>Python</span>
+              <span>BERT</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Dev Guru</h3>
+            <p>AI-powered documentation search using RAG and Tiny-Llama models for efficient solution discovery.</p>
+            <div class="tech-stack">
+              <span>Python</span>
+              <span>RAG</span>
+              <span>LLM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <h2 class="section-title animate__animated animate__fadeIn">Publications</h2>
+        <div class="publications-grid">
+          <div class="publication-card animate__animated animate__fadeInUp">
+            <h3>Baby mentor: Learning through images</h3>
+            <p class="authors">J. Samuel, S. Patil, S. Solanki and R. Karani</p>
+            <p class="conference">2017 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS)</p>
+            <p class="publication-details">pp. 1-6, doi: 10.1109/ICIIECS.2017.8276128</p>
+            <a href="https://doi.org/10.1109/ICIIECS.2017.8276128" target="_blank" rel="noopener" class="publication-link">
+              <i class="fas fa-external-link-alt"></i> View Publication
+            </a>
+          </div>
+          <div class="publication-card animate__animated animate__fadeInUp animate__delay-1s">
+            <h3>Epileptic Seizure Prediction using Power Spectrum and Amplitude Analysis of Beta Band of EEG Signals</h3>
+            <p class="authors">Raj Sadaye, Sagar Parekh, Jeremy Samuel and Khushali Deulkar</p>
+            <p class="conference">International Journal of Computer Applications</p>
+            <p class="publication-details">155(9):13-17, December 2016</p>
+            <a href="#" class="publication-link">
+              <i class="fas fa-external-link-alt"></i> View Publication
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Programming</h3>
+            <div class="skill-tags">
+              <span>Java</span>
+              <span>Python</span>
+              <span>JavaScript</span>
+              <span>Spring</span>
+              <span>D3</span>
+              <span>Spark</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Technologies</h3>
+            <div class="skill-tags">
+              <span>AWS</span>
+              <span>Kafka</span>
+              <span>React</span>
+              <span>GraphQL</span>
+              <span>REST</span>
+              <span>Kubernetes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><i class="fas fa-university"></i> UIUC Email: sjeremy3@illinois.edu</p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jeremy-samuel-col323/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/CodingWithJS" target="_blank" rel="noopener">GitHub Profile</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Jeremy Samuel. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
 </html>
