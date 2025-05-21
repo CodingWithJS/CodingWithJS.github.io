@@ -10,6 +10,7 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -30,11 +31,15 @@
   <header class="hero-section">
     <div class="hero-content">
       <div class="profile-container animate__animated animate__fadeIn">
-        <img src="images/profile.jpg" alt="Jeremy Samuel" class="profile-image">
+        <img src="./images/profile.jpg" alt="Jeremy Samuel" class="profile-image" loading="eager">
       </div>
       <h1 class="animate__animated animate__fadeInDown">Jeremy Samuel</h1>
       <h2 class="animate__animated animate__fadeInUp">Software Engineer & Technology Leader</h2>
       <p class="animate__animated animate__fadeInUp animate__delay-1s">Master's student in Computer Science and Technology Management at UIUC</p>
+      <div class="bible-verse animate__animated animate__fadeInUp animate__delay-2s">
+        <p>"Whatever your hand finds to do, do it with all your might"</p>
+        <p class="verse-reference">- Ecclesiastes 9:10</p>
+      </div>
       <div class="social-links animate__animated animate__fadeInUp animate__delay-1s">
         <a href="https://www.linkedin.com/in/jeremy-samuel-col323/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
           <i class="fab fa-linkedin"></i>
@@ -42,7 +47,7 @@
         <a href="https://github.com/CodingWithJS" target="_blank" rel="noopener" aria-label="GitHub Profile">
           <i class="fab fa-github"></i>
         </a>
-      </div>
+  </div>
     </div>
   </header>
 
@@ -61,25 +66,40 @@
 
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title animate__animated animate__fadeIn">Experience Timeline</h2>
         <div class="timeline">
-          <div class="timeline-item">
-            <h3>Graduate Teaching Assistant</h3>
-            <h4>University of Illinois Urbana-Champaign</h4>
-            <p class="date">Sep 2024 - Present</p>
-            <ul>
-              <li>Managing 4 teams for BADM-550: Business Practicum projects</li>
-              <li>Conducting workshops for 120+ MSBA students on Tableau and Git</li>
-            </ul>
+          <div class="timeline-item animate__animated animate__fadeInUp">
+            <div class="timeline-content">
+              <h3>Graduate Teaching Assistant</h3>
+              <h4>University of Illinois Urbana-Champaign</h4>
+              <p class="date">Sep 2024 - Present</p>
+              <ul>
+                <li>Managing 4 teams for BADM-550: Business Practicum projects</li>
+                <li>Conducting workshops for 120+ MSBA students on Tableau and Git</li>
+              </ul>
+              <div class="tech-stack">
+                <span>Tableau</span>
+                <span>Git</span>
+                <span>Project Management</span>
+              </div>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h3>Associate Software Engineer III</h3>
-            <h4>JPMorgan Chase</h4>
-            <p class="date">Feb 2022 - Jul 2024</p>
-            <ul>
-              <li>Led development teams and mentored junior developers</li>
-              <li>Developed content management system with React and Spring Boot</li>
-            </ul>
+          <div class="timeline-item animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="timeline-content">
+              <h3>Associate Software Engineer III</h3>
+              <h4>JPMorgan Chase</h4>
+              <p class="date">Feb 2022 - Jul 2024</p>
+              <ul>
+                <li>Led development teams and mentored junior developers</li>
+                <li>Developed content management system with React and Spring Boot</li>
+              </ul>
+              <div class="tech-stack">
+                <span>React</span>
+                <span>Spring Boot</span>
+                <span>AWS</span>
+                <span>Kubernetes</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -159,32 +179,73 @@
 
     <section id="skills" class="section">
       <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Programming</h3>
-            <div class="skill-tags">
-              <span>Java</span>
-              <span>Python</span>
-              <span>JavaScript</span>
-              <span>Spring</span>
-              <span>D3</span>
-              <span>Spark</span>
+        <h2 class="section-title">Technology Stack</h2>
+        <div class="tech-stack-grid">
+          <div class="tech-category animate__animated animate__fadeInUp">
+            <h3>Frontend Development</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <i class="fab fa-react"></i>
+                <span>React</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+              </div>
             </div>
           </div>
-          <div class="skill-category">
-            <h3>Technologies</h3>
-            <div class="skill-tags">
-              <span>AWS</span>
-              <span>Kafka</span>
-              <span>React</span>
-              <span>GraphQL</span>
-              <span>REST</span>
-              <span>Kubernetes</span>
+          <div class="tech-category animate__animated animate__fadeInUp animate__delay-1s">
+            <h3>Backend Development</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <i class="fab fa-java"></i>
+                <span>Java</span>
+              </div>
+              <div class="tech-item">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <span>Spring Boot</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-server"></i>
+                <span>Node.js</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div class="tech-category animate__animated animate__fadeInUp animate__delay-2s">
+            <h3>Cloud & DevOps</h3>
+            <div class="tech-items">
+              <div class="tech-item">
+                <i class="fab fa-aws"></i>
+                <span>AWS</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-cube"></i>
+                <span>Kubernetes</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-docker"></i>
+                <span>Docker</span>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-code-branch"></i>
+                <span>Git</span>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
     </section>
 
     <section id="contact" class="section">
@@ -196,7 +257,7 @@
             <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jeremy-samuel-col323/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
             <p><i class="fab fa-github"></i> <a href="https://github.com/CodingWithJS" target="_blank" rel="noopener">GitHub Profile</a></p>
           </div>
-        </div>
+    </div>
       </div>
     </section>
   </main>
@@ -206,6 +267,33 @@
       <p>© 2024 Jeremy Samuel. All rights reserved.</p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/script.js"></script>
+
+  <div class="floating-chatbot">
+    <button class="chatbot-toggle">
+      <i class="fas fa-robot"></i>
+    </button>
+    <div class="chatbot-container">
+      <div class="chatbot-header">
+        <h3>AI Assistant</h3>
+        <button class="chatbot-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="ai-messages">
+        <div class="ai-message">
+          <p>Hello! I'm your AI assistant. Ask me anything about Jeremy's experience, skills, or projects!</p>
+        </div>
+      </div>
+      <div class="chatbot-input-container">
+        <input type="text" id="ai-input" placeholder="Ask me anything about Jeremy...">
+        <button id="ai-send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+    </div>
+  </div>
 </body>
 </html>
