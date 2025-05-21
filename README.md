@@ -1,48 +1,42 @@
 # Jeremy Samuel's Portfolio
 
-A modern, responsive portfolio website showcasing my professional experience, education, projects, and skills.
+A modern, responsive portfolio website showcasing my experience, skills, and projects.
 
 ## Live Website
-Visit my portfolio at [jeremy-samuel.github.io](https://jeremy-samuel.github.io) or [codingwithjs.github.io/portfolio](https://codingwithjs.github.io/portfolio)
+- Main URL: [https://jeremy-samuel.com](https://jeremy-samuel.com)
+- GitHub Pages URL: [https://codingwithjs.github.io](https://codingwithjs.github.io)
 
 ## Features
-
 - Responsive design that works on all devices
-- Clean and modern UI with smooth animations
-- Sections for:
-  - About Me
-  - Professional Experience
-  - Education
-  - Projects
-  - Publications
-  - Skills
-- Social media links and professional contact information
-- Timeline-based experience display
-- Project cards with technology tags
-- Skills categorization
+- Modern UI with smooth animations
+- Interactive timeline of experience
+- Project showcase with detailed descriptions
+- Technology stack visualization
+- Publications section
+- Contact information
+- AI-powered chatbot assistant
 
 ## Technologies Used
-
 - HTML5
-- CSS3 (with CSS Variables and Flexbox/Grid)
+- CSS3
 - JavaScript
-- Font Awesome for icons
+- TensorFlow.js for AI chatbot
+- Font Awesome icons
 - Animate.css for animations
 
 ## Setup
-
 1. Clone the repository
-2. Open `index.html` in a web browser
+2. Open `index.html` in your browser
+3. Customize the content in `index.html`
+4. Modify styles in `css/styles.css`
+5. Update the AI responses in `js/script.js`
 
-## Development
-
-To modify the website:
-
-1. Edit `index.html` for content changes
-2. Modify `css/styles.css` for styling changes
-3. Add any additional JavaScript functionality in the `js` directory
+## Custom Domain Setup
+This website is configured to use a custom domain (jeremy-samuel.com). The setup includes:
+- CNAME file for domain configuration
+- GitHub Pages settings configured for custom domain
+- SSL certificate enabled for secure HTTPS connection
 
 ## Contact
-
-- LinkedIn: [jeremy-samuel-col323](https://www.linkedin.com/in/jeremy-samuel-col323/)
+- LinkedIn: [Jeremy Samuel](https://www.linkedin.com/in/jeremy-samuel-col323/)
 - GitHub: [CodingWithJS](https://github.com/CodingWithJS)
