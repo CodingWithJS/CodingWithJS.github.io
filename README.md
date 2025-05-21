@@ -3,8 +3,7 @@
 A modern, responsive portfolio website showcasing my experience, skills, and projects.
 
 ## Live Website
-- Main URL: [https://jeremy-samuel.com](https://jeremy-samuel.com)
-- GitHub Pages URL: [https://codingwithjs.github.io](https://codingwithjs.github.io)
+Visit my portfolio at [jeremy-samuel.github.io](https://jeremy-samuel.github.io) or [codingwithjs.github.io/portfolio](https://codingwithjs.github.io/portfolio)
 
 ## Features
 - Responsive design that works on all devices
@@ -30,12 +29,6 @@ A modern, responsive portfolio website showcasing my experience, skills, and pro
 3. Customize the content in `index.html`
 4. Modify styles in `css/styles.css`
 5. Update the AI responses in `js/script.js`
-
-## Custom Domain Setup
-This website is configured to use a custom domain (jeremy-samuel.com). The setup includes:
-- CNAME file for domain configuration
-- GitHub Pages settings configured for custom domain
-- SSL certificate enabled for secure HTTPS connection
 
 ## Contact
 - LinkedIn: [Jeremy Samuel](https://www.linkedin.com/in/jeremy-samuel-col323/)
