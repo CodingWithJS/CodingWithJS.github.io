@@ -3,7 +3,7 @@
 A modern, responsive portfolio website showcasing my experience, skills, and projects.
 
 ## Live Website
-Visit my portfolio at [jeremy-samuel.github.io](https://jeremy-samuel.github.io) or [codingwithjs.github.io/portfolio](https://codingwithjs.github.io/portfolio)
+Visit my portfolio at [codingwithjs.github.io/portfolio](https://codingwithjs.github.io/portfolio)
 
 ## Features
 - Responsive design that works on all devices
