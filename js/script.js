@@ -99,6 +99,41 @@ document.addEventListener('DOMContentLoaded', async function() {
     'default': 'I can help you learn more about my experience, skills, projects, education, or contact information. What would you like to know?'
   };
 
+  // Keyword map for flexible matching
+  const keywordMap = {
+    experience: ['experience', 'work', 'job', 'career', 'jpmorgan', 'illinois', 'teaching', 'assistant'],
+    skills: ['skills', 'frontend', 'backend', 'cloud', 'aws', 'react', 'python', 'java', 'spring', 'node', 'kubernetes', 'docker', 'git'],
+    projects: ['project', 'projects', 'data', 'ml', 'cloud', 'visualization', 'dashboard', 'ai', 'machine learning'],
+    education: ['education', 'study', 'university', 'uiuc', 'tech', 'school', 'degree', 'masters', 'bachelors'],
+    contact: ['contact', 'linkedin', 'github', 'email', 'reach', 'connect'],
+  };
+
+  function findCategoryAndSubcategory(userInput) {
+    userInput = userInput.toLowerCase();
+    let foundCategory = 'default';
+    let foundSubcategory = 'default';
+
+    // Find category
+    for (const [cat, keywords] of Object.entries(keywordMap)) {
+      if (keywords.some(word => userInput.includes(word))) {
+        foundCategory = cat;
+        break;
+      }
+    }
+
+    // Find subcategory
+    if (foundCategory !== 'default') {
+      for (const subcat of Object.keys(aiResponses[foundCategory])) {
+        if (userInput.includes(subcat)) {
+          foundSubcategory = subcat;
+          break;
+        }
+      }
+    }
+
+    return { foundCategory, foundSubcategory };
+  }
+
   function addMessage(message, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `ai-message ${isUser ? 'user-message' : 'assistant-message'}`;
@@ -122,6 +157,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     return trainingData[predictedIndex].output;
   }
 
+  async function webSearch(query) {
+    try {
+      const apiUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_redirect=1&no_html=1`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      if (data.AbstractText) {
+        return data.AbstractText;
+      } else if (data.RelatedTopics && data.RelatedTopics.length > 0 && data.RelatedTopics[0].Text) {
+        return data.RelatedTopics[0].Text;
+      } else {
+        return "Sorry, I couldn't find information on that topic.";
+      }
+    } catch (err) {
+      return "Sorry, I couldn't search the web right now.";
+    }
+  }
+
   async function handleUserInput() {
     const userInput = aiInput.value.trim().toLowerCase();
     if (!userInput) return;
@@ -129,27 +181,20 @@ document.addEventListener('DOMContentLoaded', async function() {
     addMessage(userInput, true);
     aiInput.value = '';
 
-    // Get ML prediction
-    const predictedCategory = await predictResponse(userInput);
-    
-    // Find the best response based on prediction
-    let category = 'default';
-    let subcategory = 'default';
+    // Use improved keyword matching
+    const { foundCategory, foundSubcategory } = findCategoryAndSubcategory(userInput);
+    let response =
+      (aiResponses[foundCategory] && aiResponses[foundCategory][foundSubcategory]) ||
+      (aiResponses[foundCategory] && aiResponses[foundCategory]['default']) ||
+      aiResponses['default'];
 
-    for (const [cat, responses] of Object.entries(aiResponses)) {
-      if (userInput.includes(cat)) {
-        category = cat;
-        for (const [subcat] of Object.entries(responses)) {
-          if (predictedCategory === subcat) {
-            subcategory = subcat;
-            break;
-          }
-        }
-        break;
-      }
+    let found = foundCategory !== 'default' && response && response !== aiResponses['default'];
+
+    if (!found || !response) {
+      // If not found, try web search
+      addMessage("Let me look that up for you...");
+      response = await webSearch(userInput);
     }
-
-    const response = aiResponses[category][subcategory];
     addMessage(response);
   }
 
@@ -161,5 +206,5 @@ document.addEventListener('DOMContentLoaded', async function() {
   });
 
   // Add welcome message
-  addMessage('Hello! I\'m your AI assistant. I can help you learn more about Jeremy\'s experience, skills, projects, education, or contact information. What would you like to know?');
+  //addMessage('Hello! I\'m your AI assistant. I can help you learn more about Jeremy\'s experience, skills, projects, education, or contact information. What would you like to know?');
 }); 
